@@ -1,0 +1,60 @@
+name:                servant-example
+version:             0.1.0.0
+github:              "waddlaw/servant-example"
+license:             BSD3
+author:              "Shinya Yamaguchi"
+maintainer:          "ingroze@gmail.com"
+copyright:           "Copyright (c) 2018 Shinya Yamaguchi"
+
+extra-source-files:
+- README.md
+
+description:         Please see the README on GitHub at <https://github.com/waddlaw/servant-example#readme>
+
+dependencies:
+- base >= 4.7 && < 5
+- extensible
+- servant
+
+library:
+  source-dirs: src
+  dependencies:
+  - http-api-data
+
+executables:
+  server:
+    main: app/Server.hs
+    ghc-options:
+    - -threaded
+    - -rtsopts
+    - -with-rtsopts=-N
+    dependencies:
+    - servant-example
+    - bytestring
+    - containers
+    - http-media
+    - lens
+    - servant-server
+    - stm
+    - warp
+  client:
+    main: app/Client.hs
+    ghc-options:
+    - -threaded
+    - -rtsopts
+    - -with-rtsopts=-N
+    dependencies:
+    - servant-example
+    - http-client
+    - lens
+    - servant-client
+    - warp
+  js:
+    main: app/Js.hs
+    ghc-options:
+    - -threaded
+    - -rtsopts
+    - -with-rtsopts=-N
+    dependencies:
+    - servant-example
+    - servant-js
